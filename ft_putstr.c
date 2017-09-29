@@ -16,6 +16,8 @@ void	ft_putstr(char const *str)
 {
 	int index;
 
+	if (!str)
+		return ;
 	index = 0;
 	while (str[index] != '\0')
 	{
