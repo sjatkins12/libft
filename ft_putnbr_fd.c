@@ -12,43 +12,47 @@
 
 #include "libft.h"
 
-void	ft_print_index_fd(int nb, int *nbr, int index, int fd)
+
+static void		lengths(int n, size_t *len, int *weight)
 {
-	if (nb > 0)
+	*len = 1;
+	if (n >= 0)
 	{
-		while (nb > 0)
-		{
-			nbr[index] = (nb % 10);
-			nb = nb / 10;
-			index++;
-		}
+		*len = 0;
+		n = -n;
 	}
-	else
+	*weight = 1;
+	while (n / *weight < -9)
 	{
-		ft_putchar_fd('-', fd);
-		while (nb < 0)
-		{
-			nbr[index] = (nb % 10) * -1;
-			nb = nb / 10;
-			index++;
-		}
-	}
-	index--;
-	while (index >= 0)
-	{
-		ft_putchar_fd(nbr[index] + '0', fd);
-		index--;
+		*weight *= 10;
+		*len += 1;
 	}
 }
 
-void	ft_putnbr_fd(int n, int fd)
+char			*ft_itoa(int n)
 {
-	int	nbr[10];
+	size_t		len;
+	int			weight;
+	size_t		cur;
+	char		*str;
 
-	if (n == 0)
+	lengths(n, &len, &weight);
+	str = (char *)malloc(sizeof(*str) * (len + 1));
+	if (str == NULL)
+		return (NULL);
+	cur = 0;
+	if (n < 0)
 	{
-		ft_putchar_fd('0', fd);
+		str[cur] = '-';
+		cur++;
 	}
-	else
-		ft_print_index_fd(n, nbr, 0, fd);
+	if (n > 0)
+		n = -n;
+	while (weight >= 1)
+	{
+		str[cur++] = -(n / weight % 10) + 48;
+		weight /= 10;
+	}
+	str[cur] = '\0';
+	return (str);
 }

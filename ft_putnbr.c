@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	ft_print_index(int nb, int *nbr, int index)
+static void	ft_print_index(int nb, int *nbr, int index)
 {
 	if (nb > 0)
 	{
@@ -41,9 +41,9 @@ void	ft_print_index(int nb, int *nbr, int index)
 	}
 }
 
-void	ft_putnbr(int n)
+void		ft_putnbr(int n)
 {
-	int	nbr[10];
+	int		nbr[10];
 
 	if (n == 0)
 	{
