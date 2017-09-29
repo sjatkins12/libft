@@ -12,70 +12,46 @@
 
 #include "libft.h"
 
-static void	ft_itoa_helper(int n, char *ret)
+static void		lengths(int n, size_t *len, int *weight)
 {
-	char	digit[2];
-
-	digit[0] = (n % 10) + '0';
-	digit[1] = '\0';
-	if (n >= 10)
+	*len = 1;
+	if (n >= 0)
 	{
-		ft_itoa_helper(n / 10, ret);
+		*len = 0;
+		n = -n;
 	}
-	ft_strcat(ret, digit);
+	*weight = 1;
+	while (n / *weight < -9)
+	{
+		*weight *= 10;
+		*len += 1;
+	}
 }
 
-static int	ft_count_digits(int n)
+char			*ft_itoa(int n)
 {
-	int		digits;
+	size_t		len;
+	int			weight;
+	size_t		cur;
+	char		*str;
 
-	digits = 1;
-	while (n >= 10)
-	{
-		n /= 10;
-		digits++;
-	}
-	return (digits);
-}
-
-static char	*ft_check_min(int n)
-{
-	char	*ret;
-
-	if (n == -2147483647 - 1)
-	{
-		ret = (char *)malloc(sizeof(char) * (12));
-		ft_strcpy(ret, "-2147483648");
-		return (ret);
-	}
-	return (NULL);
-}
-
-char		*ft_itoa(int n)
-{
-	char	*ret;
-	int		negative;
-
-	negative = 0;
-	if (n == 0)
-	{
-		ret = (char *)malloc(sizeof(char) * 2);
-		ret = "0";
-		return (ret);
-	}
+	lengths(n, &len, &weight);
+	str = (char *)malloc(sizeof(*str) * (len + 1));
+	if (str == NULL)
+		return (NULL);
+	cur = 0;
 	if (n < 0)
 	{
-		negative = 1;
-		n *= -1;
-		if ((ret = ft_check_min(n)))
-			return (ret);
+		str[cur] = '-';
+		cur++;
 	}
-	ret = (char *)malloc(sizeof(char) * (ft_count_digits(n) + negative + 1));
-	if (!ret)
-		return (NULL);
-	if (negative == 1)
-		ft_strcat(ret, "-");
-	ft_itoa_helper(n, ret);
-	ret[ft_count_digits(n) + negative] = '\0';
-	return (ret);
+	if (n > 0)
+		n = -n;
+	while (weight >= 1)
+	{
+		str[cur++] = -(n / weight % 10) + 48;
+		weight /= 10;
+	}
+	str[cur] = '\0';
+	return (str);
 }
