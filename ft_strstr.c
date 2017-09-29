@@ -18,7 +18,7 @@ char	*ft_strstr(const char *big, const char *little)
 		return ((char *)big);
 	while (*big != '\0')
 	{
-		if (ft_strcmp(big, little) == 0)
+		if (ft_strncmp(big, little, ft_strlen(little)) == 0)
 			return ((char *)big);
 		big++;
 	}

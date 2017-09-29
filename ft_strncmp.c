@@ -24,12 +24,12 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n)
 	while (*ch1 != '\0' && *ch2 != '\0' && i < n)
 	{
 		if (*ch1 != *ch2)
-			return (*ch1 - *ch2);
+			return ((int)(*ch1 - *ch2));
 		ch1++;
 		ch2++;
 		i++;
 	}
 	if (i == n)
 		return (0);
-	return (*ch1 - *ch2);
+	return ((int)(*ch1 - *ch2));
 }
