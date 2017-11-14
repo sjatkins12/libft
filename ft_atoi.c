@@ -23,9 +23,9 @@ static const char	*pass_white_space(const char *str)
 
 int					ft_atoi(const char *str)
 {
-	const char		*ptr;
-	int				ret_val;
-	int				negative;
+	const char			*ptr;
+	long				ret_val;
+	int					negative;
 
 	ret_val = 0;
 	negative = 1;
@@ -47,5 +47,5 @@ int					ft_atoi(const char *str)
 		return (0);
 	if (negative == 1 && ret_val < 0)
 		return (-1);
-	return (ret_val);
+	return ((int)ret_val);
 }

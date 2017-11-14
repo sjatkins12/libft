@@ -1,18 +1,6 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: satkins <marvin@42.fr>                     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/07/25 14:05:53 by satkins           #+#    #+#              #
-#    Updated: 2016/07/25 22:43:35 by satkins          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = libft.a
 
-SOURCE = ft_atoi.c \
+SRCS = ft_atoi.c \
 		  ft_bzero.c \
 		  ft_isalnum.c \
 		  ft_isalpha.c \
@@ -63,30 +51,38 @@ SOURCE = ft_atoi.c \
 		  ft_putchar_fd.c \
 		  ft_putstr_fd.c \
 		  ft_putendl_fd.c \
-		  ft_putnbr_fd.c 
+		  ft_putnbr_fd.c  \
+		  ft_strnjoin.c \
+		  get_next_line.c \
+		  ft_putnstr.c \
+		  ft_handle_error.c \
+		  ft_toupper_str.c \
+		  ft_lstadd.c \
+		  ft_lstdel.c \
+		  ft_lstdelone.c \
+		  ft_lstiter.c \
+		  ft_lstmap.c \
+		  ft_lstnew.c
 
-
-VPATH = srcs
-
-HEADER_FILES = includes
+HEADER = includes
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror -c
+FLAGS = -Wall -Wextra -Werror
 
-TARG = $(SOURCE:.c=.o) \
-		libft.a
+CFLAGS = -Wall -Wextra -Werror -c
+
+TARG = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(SOURCE)
-	@$(CC) $(FLAGS) -I$(HEADER_FILES) $^ && ar rc $(NAME) $(TARG)
+$(NAME): $(SRCS)
+	@$(CC) $(CFLAGS) -I$(HEADER) $^ && ar rc $@ $(TARG)
 
 clean:
 	@/bin/rm -f $(TARG)
 
 fclean: clean
-	@/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME) $(EXE)
 
 re: fclean all
-

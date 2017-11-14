@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_handle_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: satkins <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: satkins <satkins@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/19 22:58:39 by satkins           #+#    #+#             */
-/*   Updated: 2016/07/19 23:00:46 by satkins          ###   ########.fr       */
+/*   Created: 2017/11/09 12:47:10 by satkins           #+#    #+#             */
+/*   Updated: 2017/11/09 12:47:16 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void					*ft_memchr(const void *s, int c, size_t n)
+void	handle_error(void)
 {
-	const unsigned char	*s_ptr;
-	size_t				i;
-
-	i = 0;
-	s_ptr = (const unsigned char *)s;
-	while (i < n)
-	{
-		if (s_ptr[i] == (unsigned char)c)
-			return ((void *)&(s_ptr[i]));
-		i++;
-	}
-	return (NULL);
+	write(1, "Error\n", 6);
+	exit(0);
 }

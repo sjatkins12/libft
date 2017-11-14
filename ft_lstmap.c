@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: satkins <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/19 22:58:39 by satkins           #+#    #+#             */
-/*   Updated: 2016/07/19 23:00:46 by satkins          ###   ########.fr       */
+/*   Created: 2017/10/09 00:38:07 by satkins           #+#    #+#             */
+/*   Updated: 2017/10/10 21:08:27 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			*ft_memccpy(void *dst, const void *src, int c, size_t n)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	size_t				i;
-	unsigned char		*dst_ptr;
-	const unsigned char	*src_ptr;
+	t_list	*newlist;
 
-	i = 0;
-	dst_ptr = (unsigned char *)dst;
-	src_ptr = (const unsigned char *)src;
-	while (i < n)
+	if (lst != NULL && f != NULL)
 	{
-		*dst_ptr = src_ptr[i];
-		if (src_ptr[i] == (unsigned char)c)
-			return ((void *)(++dst_ptr));
-		i++;
-		dst_ptr++;
+		newlist = f(lst);
+		if (newlist != NULL && lst->next != NULL)
+			newlist->next = ft_lstmap(lst->next, f);
+		return (newlist);
 	}
 	return (NULL);
 }

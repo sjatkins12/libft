@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: satkins <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/19 22:58:39 by satkins           #+#    #+#             */
-/*   Updated: 2016/07/19 23:00:46 by satkins          ###   ########.fr       */
+/*   Created: 2017/10/09 18:49:12 by satkins           #+#    #+#             */
+/*   Updated: 2017/10/09 19:56:24 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char				*ft_itoa(int n)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	int				neg;
-	int				digit;
-	int				i;
-	unsigned int	num;
-	char			*str;
+	t_list	*new;
 
-	if ((str = ft_strnew(11)) == NULL)
+	new = (t_list *)malloc(sizeof(t_list) * 1);
+	if (new == NULL)
 		return (NULL);
-	neg = n < 0 ? -1 : 1;
-	num = neg * n;
-	i = 10;
-	if (num == 0)
-		return (ft_strcpy(str, "0"));
-	while (num > 0 && i > 0)
+	if (content == NULL)
 	{
-		digit = num % 10;
-		str[i] = '0' + digit;
-		i--;
-		num /= 10;
+		new->content = NULL;
+		new->content_size = 0;
 	}
-	if (neg == -1)
-		str[i--] = '-';
-	return (str + i + 1);
+	else
+	{
+		new->content = malloc(content_size);
+		if (new->content == NULL)
+			return (NULL);
+		ft_memmove(new->content, content, content_size);
+		new->content_size = content_size;
+	}
+	new->next = NULL;
+	return (new);
 }

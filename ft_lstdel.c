@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: satkins <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/19 22:58:39 by satkins           #+#    #+#             */
-/*   Updated: 2016/07/19 23:00:46 by satkins          ###   ########.fr       */
+/*   Created: 2017/10/09 00:37:26 by satkins           #+#    #+#             */
+/*   Updated: 2017/10/09 22:17:25 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			*ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	size_t				i;
-	unsigned char		*dst_ptr;
-	const unsigned char	*src_ptr;
+	t_list	*tmp;
+	t_list	*next;
 
-	i = 0;
-	dst_ptr = (unsigned char *)dst;
-	src_ptr = (const unsigned char *)src;
-	while (i < n)
+	tmp = *alst;
+	if (del)
 	{
-		*dst_ptr = src_ptr[i];
-		if (src_ptr[i] == (unsigned char)c)
-			return ((void *)(++dst_ptr));
-		i++;
-		dst_ptr++;
+		while (tmp)
+		{
+			next = tmp->next;
+			del(tmp->content, tmp->content_size);
+			free(tmp);
+			tmp = next;
+		}
+		*alst = NULL;
 	}
-	return (NULL);
 }

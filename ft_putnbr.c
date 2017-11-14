@@ -12,17 +12,18 @@
 
 #include "libft.h"
 
-static void	ft_print_index(int nb, int *nbr, int index)
+static void	ft_print_index(int nb, int *nbr, size_t *len)
 {
+	int		index;
+
+	index = 0;
 	if (nb > 0)
-	{
 		while (nb > 0)
 		{
 			nbr[index] = (nb % 10);
 			nb = nb / 10;
 			index++;
 		}
-	}
 	else
 	{
 		ft_putchar('-');
@@ -32,23 +33,25 @@ static void	ft_print_index(int nb, int *nbr, int index)
 			nb = nb / 10;
 			index++;
 		}
+		*len = 1;
 	}
-	index--;
-	while (index >= 0)
-	{
+	*len += (size_t)index;
+	while (--index >= 0)
 		ft_putchar(nbr[index] + '0');
-		index--;
-	}
 }
 
-void		ft_putnbr(int n)
+size_t		ft_putnbr(int n)
 {
+	size_t	len;
 	int		nbr[10];
 
+	len = 0;
 	if (n == 0)
 	{
 		ft_putchar('0');
+		len = 1;
 	}
 	else
-		ft_print_index(n, nbr, 0);
+		ft_print_index(n, nbr, &len);
+	return (len);
 }

@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strnjoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: satkins <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: satkins <satkins@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/19 22:58:39 by satkins           #+#    #+#             */
-/*   Updated: 2016/07/19 23:00:46 by satkins          ###   ########.fr       */
+/*   Created: 2017/11/02 21:27:56 by satkins           #+#    #+#             */
+/*   Updated: 2017/11/02 21:27:58 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void					*ft_memchr(const void *s, int c, size_t n)
+char		*ft_strnjoin(char const *s1, char const *s2, int i)
 {
-	const unsigned char	*s_ptr;
-	size_t				i;
+	char	*ret;
 
-	i = 0;
-	s_ptr = (const unsigned char *)s;
-	while (i < n)
+	ret = ft_strjoin(s1, s2);
+	if (i == 1 || i == 3)
 	{
-		if (s_ptr[i] == (unsigned char)c)
-			return ((void *)&(s_ptr[i]));
-		i++;
+		free((void *)s1);
+		s1 = NULL;
 	}
-	return (NULL);
+	if (i == 2 || i == 3)
+	{
+		free((void *)s2);
+		s2 = NULL;
+	}
+	return ((char *)ret);
 }

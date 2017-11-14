@@ -54,7 +54,7 @@ char			**ft_strsplit(char const *s, char c)
 	char		*curr;
 	int			i;
 
-	i = 0;
+	i = -1;
 	if (!s)
 		return (NULL);
 	count = word_count(s, c);
@@ -63,13 +63,13 @@ char			**ft_strsplit(char const *s, char c)
 	array = (char **)malloc(sizeof(char *) * (1 + count));
 	if (!array)
 		return (NULL);
-	while (i < count)
+	while (++i < count)
 	{
 		curr = next_word(&curr[curr_len], c);
 		curr_len = word_len(curr, c);
 		array[i] = (char *)malloc(sizeof(char) * (1 + curr_len));
 		ft_strncpy(array[i], curr, curr_len);
-		i++;
+		array[i][curr_len] = '\0';
 	}
 	array[i] = NULL;
 	return (array);

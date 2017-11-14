@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_toupper_str.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: satkins <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: satkins <satkins@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/19 22:58:39 by satkins           #+#    #+#             */
-/*   Updated: 2016/07/19 23:00:46 by satkins          ###   ########.fr       */
+/*   Created: 2017/11/13 15:01:01 by satkins           #+#    #+#             */
+/*   Updated: 2017/11/13 15:01:06 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void					*ft_memchr(const void *s, int c, size_t n)
+void	ft_toupper_str(char *str)
 {
-	const unsigned char	*s_ptr;
-	size_t				i;
+	int	i;
 
-	i = 0;
-	s_ptr = (const unsigned char *)s;
-	while (i < n)
-	{
-		if (s_ptr[i] == (unsigned char)c)
-			return ((void *)&(s_ptr[i]));
-		i++;
-	}
-	return (NULL);
+	i = -1;
+	if (!str)
+		return ;
+	while (str[++i] != '\0')
+		str[i] = ft_toupper(str[i]);
 }
