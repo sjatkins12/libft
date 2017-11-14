@@ -55,14 +55,14 @@ SRCS = ft_atoi.c \
 		  ft_strnjoin.c \
 		  get_next_line.c \
 		  ft_putnstr.c \
-		  ft_handle_error.c \
 		  ft_toupper_str.c \
 		  ft_lstadd.c \
 		  ft_lstdel.c \
 		  ft_lstdelone.c \
 		  ft_lstiter.c \
 		  ft_lstmap.c \
-		  ft_lstnew.c
+		  ft_lstnew.c \
+		  ft_tolower_str.c
 
 HEADER = includes
 

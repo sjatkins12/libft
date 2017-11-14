@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_handle_error.c                                  :+:      :+:    :+:   */
+/*   ft_tolower_str.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: satkins <satkins@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 12:47:10 by satkins           #+#    #+#             */
-/*   Updated: 2017/11/09 12:47:16 by satkins          ###   ########.fr       */
+/*   Created: 2017/11/14 15:50:36 by satkins           #+#    #+#             */
+/*   Updated: 2017/11/14 15:50:44 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	handle_error(void)
+void	ft_tolower_str(char *str)
 {
-	write(1, "Error\n", 6);
-	exit(0);
+	int	i;
+
+	i = -1;
+	if (!str)
+		return ;
+	while (str[++i] != '\0')
+		str[i] = ft_tolower(str[i]);
 }
