@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asyed <asyed@student.42.fr>                +#+  +:+       +#+         #
+#    By: satkins <satkins@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/07/25 14:05:53 by satkins           #+#    #+#              #
-#    Updated: 2018/04/18 14:59:51 by nkouris          ###   ########.fr        #
+#    Updated: 2018/04/21 12:09:11 by satkins          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,6 @@ SRC_LIBFT = \
 		ft_splitwhitespace \
 		stack \
 		ft_double_linked_list \
-		metaalloc \
 		ft_strerror 
 
 SRC_PRINTF = \
@@ -138,11 +137,11 @@ $(NAME): $(OBJSRC)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	@/bin/rm -f $(OBJSRC)
+	@rm -f $(OBJSRC)
 	@ echo "$(RED)Cleaning folders of object files...$(RES)"
 
 fclean: clean
-	@/bin/rm -f $(NAME)
+	@rm -f $(NAME)
 	@ echo "$(RED)Removing library file...$(RES)"
 
 re: fclean all

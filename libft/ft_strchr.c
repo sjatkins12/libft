@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: satkins <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/19 22:58:39 by satkins           #+#    #+#             */
-/*   Updated: 2018/04/16 01:15:36 by nkouris          ###   ########.fr       */
+/*   Updated: 2018/04/21 11:55:06 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 char	*ft_strchr(const char *s, int c)
 {
+	if (!s)
+		return (NULL);
 	while (*s != '\0')
 	{
 		if (*s == c)
@@ -22,5 +24,5 @@ char	*ft_strchr(const char *s, int c)
 	}
 	if (c == '\0')
 		return ((char *)s);
-	return ("\0");
+	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asyed <asyed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/19 22:58:39 by satkins           #+#    #+#             */
-/*   Updated: 2018/04/16 08:51:03 by asyed            ###   ########.fr       */
+/*   Updated: 2018/04/21 12:07:34 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,19 @@
 # define BUFF_SIZE 2048
 
 # define ABS(X) X > 0 ? X : -X
-# define IS_WHITESPACE(c) (c == '\n' || c == '\t' || c == ' ' || c == '\v' || c == '\f' || c == '\r')
+# define IS_WHITESPACE(c) (c == '\n' || c == '\t' || c == ' ')
 
 int					g_fd;
+
+/*
+** STRUCTS
+*/
 
 typedef struct		s_errno
 {
 	int			ernum;
 	char		*reason;
 }					t_errno;
-
-typedef struct		s_meta
-{
-	size_t		len;
-}					t_meta;
 
 typedef struct		s_chunk
 {
@@ -60,56 +59,30 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+typedef struct		s_tuple
+{
+	int				y;
+	int				x;
+}					t_tuple;
+
+/*
+** Iterable Node
+*/
 typedef struct		s_node
 {
 	void			*content;
 	struct s_node	*next;
 	struct s_node	*previous;
 }					t_node;
-
-typedef struct		s_dblist
-{
-	t_node			*first;
-	t_node			*last;
-	int				nbr_elements;
-}					t_dblist;
-
-typedef struct		s_pqueue
-{
-	t_node			*first;
-}					t_pqueue;
-
-typedef struct		s_stack
-{
-	t_node			*top;
-}					t_stack;
-
-typedef struct		s_queue
-{
-	t_node			*first;
-	t_node			*last;
-}					t_queue;
-
-typedef struct		s_index
-{
-	int				y;
-	int				x;
-}					t_index;
-
 t_node				*new_node(void);
-char				*ft_strerror(int num);
-
-/*
-** Tracked memory allocations.
-*/
-
-void				*meta_malloc(size_t size);
-void				*meta_realloc(void *old, size_t newsize);
-void				meta_free(void *old);
 
 /*
 ** Stack
 */
+typedef struct		s_stack
+{
+	t_node			*top;
+}					t_stack;
 void				*ft_stackpeak(t_stack *stack);
 void				*ft_stackpop(t_stack *stack);
 int					ft_stackpush(t_stack *stack, void *content, size_t c_size);
@@ -119,6 +92,12 @@ int					isempty_stack(t_stack *stack);
 /*
 ** Double linked list
 */
+typedef struct		s_dblist
+{
+	t_node			*first;
+	t_node			*last;
+	int				nbr_elements;
+}					t_dblist;
 t_dblist			*new_dblist(void);
 int					dbl_push_end(t_dblist *dblist, void *content,
 						size_t c_size);
@@ -129,6 +108,10 @@ int					isempty_dblist(t_dblist *dblist);
 /*
 ** Priority Queue
 */
+typedef struct		s_pqueue
+{
+	t_node			*first;
+}					t_pqueue;
 void				ft_enpqueue(t_pqueue *queue, void *content, size_t c_size,
 					int (*comparer)(void *, void *));
 void				*peek_pqueue(t_pqueue *queue);
@@ -139,6 +122,11 @@ void				del_pqueue(t_pqueue *queue, void (*deconstruct)(void *ptr));
 /*
 ** Queue
 */
+typedef struct		s_queue
+{
+	t_node			*first;
+	t_node			*last;
+}					t_queue;
 t_queue				*new_queue(void);
 int					ft_enqueue(t_queue *queue, void *content, size_t c_size);
 void				*ft_dequeue(t_queue *queue);
@@ -218,5 +206,6 @@ int					ft_strcmp_wlen(const char *str1, const char *str2);
 void				ft_lstappend(t_list **head, t_list *newl);
 void				del_node(t_node *node, t_node *prev);
 char				**ft_splitwhitespace(char const *s);
+char				*ft_strerror(int num);
 
 #endif

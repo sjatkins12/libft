@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pqueue.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asyed <asyed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 17:13:22 by satkins           #+#    #+#             */
-/*   Updated: 2018/04/16 06:25:10 by asyed            ###   ########.fr       */
+/*   Updated: 2018/04/21 11:58:17 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void				*ft_depqueue(t_pqueue *queue)
 	{
 		queue->first = tmp->next;
 		content = tmp->content;
-		meta_free(tmp);
+		free(tmp);
 		return (content);
 	}
 	return (NULL);
@@ -84,10 +84,10 @@ void				del_pqueue(t_pqueue *queue, void (*deconstruct)(void *ptr))
 	while (node)
 	{
 		deconstruct(node->content);
-		meta_free(node->content);
+		free(node->content);
 		hold = node->next;
-		meta_free(node);
+		free(node);
 		node = hold;
 	}
-	meta_free(queue);
+	free(queue);
 }

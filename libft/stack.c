@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asyed <asyed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 19:57:20 by ztisnes           #+#    #+#             */
-/*   Updated: 2018/04/15 15:35:34 by asyed            ###   ########.fr       */
+/*   Updated: 2018/04/21 11:58:27 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void				*ft_stackpop(t_stack *stack)
 		return (NULL);
 	next = stack->top->next;
 	anything = stack->top->content;
-	meta_free(stack->top);
+	free(stack->top);
 	stack->top = next;
 	return (anything);
 }

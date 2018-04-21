@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asyed <asyed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 15:21:43 by tle-huu-          #+#    #+#             */
-/*   Updated: 2018/04/15 15:07:40 by asyed            ###   ########.fr       */
+/*   Updated: 2018/04/21 11:56:29 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ t_chunk		*new_chunk(int fd, char *str)
 	t_chunk		*newb;
 
 	if (!(newb = (t_chunk *)ft_memalloc(sizeof(t_chunk))))
-	{
-		ft_putstr("Error allocating memory new chunk\n");
-		exit(2);
-	}
+		return (NULL);
 	newb->fd = fd;
 	newb->str = str;
 	return (newb);
@@ -42,9 +39,10 @@ t_list		*get_fd(t_list **list, int fd)
 				return (tmp);
 			tmp = tmp->next;
 		}
-		new_chunky = new_chunk(fd, "\0");
-		tmp = ft_lstnew(new_chunky, sizeof(t_chunk));
-		meta_free(new_chunky);
+		if (!(new_chunky = new_chunk(fd, "\0"))
+			|| !(tmp = ft_lstnew(new_chunky, sizeof(t_chunk))))
+			return (NULL);
+		free(new_chunky);
 		ft_lstadd(list, tmp);
 		return (tmp);
 	}
@@ -98,19 +96,18 @@ int			get_next_line(const int fd, char **line)
 	char				buff[BUFF_SIZE + 1];
 	char				*test;
 
-	if (fd < 0 || !line || read(fd, buff, 0) < 0)
+	if (fd < 0 || !line || read(fd, buff, 0) < 0 || !(curr = get_fd(&list, fd)))
 		return (-1);
-	curr = get_fd(&list, fd);
 	while ((reader = read(fd, buff, BUFF_SIZE)))
 	{
 		buff[reader] = 0;
 		test = ((t_chunk *)curr->content)->str;
 		if (!(((t_chunk *)curr->content)->str =
-		ft_strjoin(((t_chunk *)curr->content)->str, buff)))
+			ft_strjoin(((t_chunk *)curr->content)->str, buff)))
 			return (-1);
 		if (test && test[0])
-			meta_free(test);
-		if (check(buff) >= 0)
+			free(test);
+		if (ft_strchr(buff, '\n'))
 			break ;
 	}
 	if (reader < BUFF_SIZE && !ft_strlen(((t_chunk *)curr->content)->str))

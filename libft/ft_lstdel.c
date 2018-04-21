@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: satkins <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 00:37:26 by satkins           #+#    #+#             */
-/*   Updated: 2017/10/09 22:17:25 by satkins          ###   ########.fr       */
+/*   Updated: 2018/04/21 11:45:54 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 		{
 			next = tmp->next;
 			del(tmp->content, tmp->content_size);
-			meta_free(tmp);
+			free(tmp);
 			tmp = next;
 		}
 		*alst = NULL;
