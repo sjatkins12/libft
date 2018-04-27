@@ -6,7 +6,7 @@
 /*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/19 22:58:39 by satkins           #+#    #+#             */
-/*   Updated: 2018/04/21 12:07:34 by satkins          ###   ########.fr       */
+/*   Updated: 2018/04/26 10:40:13 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,5 +207,6 @@ void				ft_lstappend(t_list **head, t_list *newl);
 void				del_node(t_node *node, t_node *prev);
 char				**ft_splitwhitespace(char const *s);
 char				*ft_strerror(int num);
+size_t				ft_putul(size_t n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 17:13:22 by satkins           #+#    #+#             */
-/*   Updated: 2018/04/21 11:58:17 by satkins          ###   ########.fr       */
+/*   Updated: 2018/04/26 09:39:36 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void				*peek_pqueue(t_pqueue *queue)
 		return (NULL);
 	return (queue->first->content);
 }
-
 
 void				del_pqueue(t_pqueue *queue, void (*deconstruct)(void *ptr))
 {

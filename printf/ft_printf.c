@@ -6,7 +6,7 @@
 /*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 11:12:16 by satkins           #+#    #+#             */
-/*   Updated: 2018/03/12 16:50:43 by satkins          ###   ########.fr       */
+/*   Updated: 2018/04/24 16:23:56 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ size_t				formatter(va_list *ap, char *format)
 
 	len = 0;
 	next_arg = ft_strchr(format, '%');
-	while (*next_arg != '\0')
+	while (next_arg && *next_arg != '\0')
 	{
 		len += next_arg - format;
 		ft_putnstr_fd(format, next_arg - format, g_fd);

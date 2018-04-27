@@ -6,7 +6,7 @@
 #    By: satkins <satkins@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/07/25 14:05:53 by satkins           #+#    #+#              #
-#    Updated: 2018/04/21 15:11:57 by satkins          ###   ########.fr        #
+#    Updated: 2018/04/24 14:55:31 by satkins          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ SRCSDIR_LIBFT = libft/
 SRCSDIR_PRINTF = printf/
 INCLUDES = -I inc/
 CC = gcc
-FLAGS += -Wall -Wextra -Werror -g -fsanitize=address
-CFLAGS += -c -Wall -Wextra -Werror 
+FLAGS += -Wall -Wextra -Werror -g
+CFLAGS += -c -Wall -Wextra -Werror -g
 
 ################################################################################
 # SOURCE FILES                                                          #

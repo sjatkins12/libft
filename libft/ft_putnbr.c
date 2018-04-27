@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: satkins <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/19 22:58:39 by satkins           #+#    #+#             */
-/*   Updated: 2016/07/19 23:00:46 by satkins          ###   ########.fr       */
+/*   Updated: 2018/04/26 10:43:02 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,37 @@ size_t		ft_putnbr(int n)
 	}
 	else
 		ft_print_index(n, nbr, &len);
+	return (len);
+}
+
+static void	ft_printul_index(size_t nb, int *nbr, size_t *len)
+{
+	int		index;
+
+	index = 0;
+	while (nb > 0)
+	{
+		nbr[index] = (nb % 10);
+		nb = nb / 10;
+		index++;
+	}
+	*len += (size_t)index;
+	while (--index >= 0)
+		ft_putchar(nbr[index] + '0');
+}
+
+size_t		ft_putul(size_t n)
+{
+	size_t	len;
+	int		nbr[20];
+
+	len = 0;
+	if (n == 0)
+	{
+		ft_putchar('0');
+		len = 1;
+	}
+	else
+		ft_printul_index(n, nbr, &len);
 	return (len);
 }

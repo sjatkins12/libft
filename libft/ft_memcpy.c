@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: satkins <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/19 22:58:39 by satkins           #+#    #+#             */
-/*   Updated: 2016/07/19 23:00:46 by satkins          ###   ########.fr       */
+/*   Updated: 2018/04/26 09:39:52 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void			*ft_memcpy(void *dst, const void *src, size_t n)
 	char		*dst_ptr;
 	const char	*src_ptr;
 
+	if (!dst || !src)
+		return (NULL);
 	dst_ptr = (char *)dst;
 	src_ptr = (const char *)src;
 	i = 0;
