@@ -6,7 +6,7 @@
 /*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/19 22:58:39 by satkins           #+#    #+#             */
-/*   Updated: 2018/04/26 10:40:13 by satkins          ###   ########.fr       */
+/*   Updated: 2018/04/29 14:28:47 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ int					g_fd;
 /*
 ** STRUCTS
 */
+
+typedef struct		s_dispatch
+{
+	char		*name;
+	int			(*function)(void *);
+}					t_dispatch;
 
 typedef struct		s_errno
 {
