@@ -6,7 +6,7 @@
 /*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/19 22:58:39 by satkins           #+#    #+#             */
-/*   Updated: 2018/04/29 14:28:47 by satkins          ###   ########.fr       */
+/*   Updated: 2018/05/19 19:15:59 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <stdio.h>
+# include <time.h>
 
 # define BUFF_SIZE 2048
 
@@ -214,5 +215,6 @@ void				del_node(t_node *node, t_node *prev);
 char				**ft_splitwhitespace(char const *s);
 char				*ft_strerror(int num);
 size_t				ft_putul(size_t n);
+int					ft_ahtoi(char *str);
 
 #endif
