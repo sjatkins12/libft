@@ -6,7 +6,7 @@
 /*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 16:28:33 by satkins           #+#    #+#             */
-/*   Updated: 2018/05/19 18:25:26 by satkins          ###   ########.fr       */
+/*   Updated: 2018/05/20 19:30:03 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static char	*pass_prefix(char *str)
 {
 	if (*str == '0' && ft_toupper(*(str + 1)) == 'X')
 		str += 2;
+	else
+		return (NULL);
 	return (str);
 }
 
@@ -58,9 +60,10 @@ int		ft_ahtoi(char *str)
 
 	ret = 0;
 	str = pass_white_space(str);
-	str = pass_prefix(str);
+	if ((str = pass_prefix(str)) == NULL)
+		return (-1);
 	if (is_hexdigit(*str) == 0)
-		return (0);
+		return (-1);
 	while (*str != '\0' && is_hexdigit(*str))
 	{
 		ret = (ret * 16) + hex_val(*str);
