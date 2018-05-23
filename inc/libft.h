@@ -6,7 +6,7 @@
 /*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/19 22:58:39 by satkins           #+#    #+#             */
-/*   Updated: 2018/04/29 14:28:47 by satkins          ###   ########.fr       */
+/*   Updated: 2018/05/05 15:39:05 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 # define BUFF_SIZE 2048
 
+# define EXIT_SOFT_FAILURE -1
 # define ABS(X) X > 0 ? X : -X
 # define IS_WHITESPACE(c) (c == '\n' || c == '\t' || c == ' ')
 
