@@ -6,7 +6,7 @@
 #    By: satkins <satkins@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/07/25 14:05:53 by satkins           #+#    #+#              #
-#    Updated: 2018/04/24 14:55:31 by satkins          ###   ########.fr        #
+#    Updated: 2018/05/19 16:42:28 by satkins          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,8 @@ SRC_LIBFT = \
 		ft_splitwhitespace \
 		stack \
 		ft_double_linked_list \
-		ft_strerror 
+		ft_strerror \
+		ft_ahtoi
 
 SRC_PRINTF = \
 		ft_printf \

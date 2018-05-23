@@ -6,7 +6,7 @@
 /*   By: satkins <satkins@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/19 22:58:39 by satkins           #+#    #+#             */
-/*   Updated: 2018/05/05 15:39:05 by satkins          ###   ########.fr       */
+/*   Updated: 2018/05/23 10:01:55 by satkins          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <stdio.h>
+# include <time.h>
+
+# define RED "\033[1;31m"
+# define GREEN "\033[1;32m"
+# define YELLOW  "\033[1;33m"
+# define CYAN "\033[1;36m"
+# define RES "\033[0m"
 
 # define BUFF_SIZE 2048
 
@@ -215,5 +222,6 @@ void				del_node(t_node *node, t_node *prev);
 char				**ft_splitwhitespace(char const *s);
 char				*ft_strerror(int num);
 size_t				ft_putul(size_t n);
+int					ft_ahtoi(char *str);
 
 #endif
